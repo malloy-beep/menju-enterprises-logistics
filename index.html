@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menju Enterprises Logistics - Transport Solutions</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #123456;
+      --secondary: #28527a;
+      --accent: #d62828;
+      --light: #f8f9fa;
+      --dark: #333;
+      --shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    body {margin:0; font-family:sans-serif; line-height:1.6; background:var(--light); color:var(--dark);}
+    header {background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;position:sticky;top:0;z-index:1000;}
+    .nav-container {max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;}
+    .logo {font-size:1.6rem;font-weight:700;display:flex;align-items:center;}
+    .logo-icon {margin-right:10px;font-size:2rem;color:var(--accent);}
+    .nav-links {list-style:none;display:flex;}
+    .nav-links li{margin-left:1.5rem;}
+    .nav-links a{color:white;text-decoration:none;transition:var(--transition);}
+    .nav-links a:hover{color:var(--accent);}
+    .hero {background:linear-gradient(rgba(18,52,86,.85),rgba(40,82,122,.75)),url('https://images.unsplash.com/photo-1504328345200-a99aa007743b') center/cover no-repeat;min-height:90vh;display:flex;justify-content:center;align-items:center;text-align:center;color:white;padding:2rem;}
+    .hero h1{font-size:3rem;margin-bottom:1rem;}
+    .hero p{font-size:1.2rem;margin-bottom:2rem;}
+    .btn{background:var(--accent);color:white;padding:12px 25px;border:none;border-radius:30px;cursor:pointer;text-decoration:none;transition:var(--transition);box-shadow:var(--shadow);}
+    .btn:hover{background:#b81f1f;}
+    .container{max-width:1200px;margin:auto;padding:4rem 2rem;}
+    .section-title{text-align:center;margin-bottom:3rem;}
+    .section-title h2{font-size:2.2rem;color:var(--primary);}
+    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+    .service-card{background:white;padding:2rem;border-radius:10px;box-shadow:var(--shadow);text-align:center;transition:var(--transition);}
+    .service-card:hover{transform:translateY(-8px);}
+    .service-icon{font-size:3rem;color:var(--secondary);margin-bottom:1rem;transition:var(--transition);}
+    .service-card:hover .service-icon {color: var(--accent); animation: bounce 0.6s;}
+    @keyframes bounce {0%, 100% { transform: translateY(0);} 50% { transform: translateY(-8px);}}
+    .map-container{border-radius:10px;overflow:hidden;box-shadow:var(--shadow);}
+    #map{height:400px;width:100%;}
+    footer{background:#0f172a;color:#cbd5e1;padding:2rem;text-align:center;}
+    footer a{color:#63b3ed;text-decoration:none;}
+    footer a:hover{text-decoration:underline;}
+    form input, form textarea {width:80%; max-width:400px; padding:10px; margin:10px auto; display:block; border:1px solid #ccc; border-radius:5px;}
+    form button {margin-top:10px;}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-boxes-stacked logo-icon"></i>
+        <span>Menju Enterprises Logistics</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Trusted Logistics Across East Africa</h1>
+      <p>Delivering reliable, efficient, and secure transport solutions for your business.</p>
+      <a href="#contact" class="btn">Get a Quote</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="container">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Comprehensive logistics solutions tailored for East Africa.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-truck"></i></div>
+        <h3>Road Freight</h3>
+        <p>Efficient transportation across major East African routes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shipping-fast"></i></div>
+        <h3>Freight Forwarding</h3>
+        <p>Coordinating international shipments with reliable partners.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-globe-africa"></i></div>
+        <h3>Cross-Border Logistics</h3>
+        <p>Seamless customs clearance and cross-border support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage / Map -->
+  <section id="coverage" class="container">
+    <div class="section-title">
+      <h2>Our Coverage</h2>
+      <p>We operate across Uganda, Rwanda, Kenya, and Tanzania.</p>
+    </div>
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <footer id="contact">
+    <p><strong>Contact Menju Enterprises Logistics</strong></p>
+
+    <!-- Contact Form -->
+    <form action="https://formsubmit.co/menjuent@yahoo.com" method="POST">
+      <!-- Settings -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://YOUR-USERNAME.github.io/menju-enterprise-logistics/thank-you.html">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <p>Email: <a href="mailto:menjuent@yahoo.com">menjuent@yahoo.com</a></p>
+    <p>Phone: +254 723 878 746</p>
+    <p>Address: Nairobi, Kenya</p>
+    <p>&copy; 2025 Menju Enterprises Logistics. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([1.2921, 36.8219], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    // Example hubs
+    L.marker([0.3476, 32.5825]).addTo(map).bindPopup("Kampala Hub");
+    L.marker([-1.2921, 36.8219]).addTo(map).bindPopup("Nairobi Hub");
+    L.marker([-1.9403, 29.8739]).addTo(map).bindPopup("Kigali Hub");
+    L.marker([-6.8235, 39.2695]).addTo(map).bindPopup("Dar es Salaam Hub");
+  </script>
+</body>
+</html>
