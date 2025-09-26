@@ -124,13 +124,28 @@
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" placeholder="Your message" required></textarea>
       <button type="submit" class="btn">Send Message</button>
-    </form>
+    <form action="https://formsubmit.co/larrymark649@gmail.com" method="POST">
+  <!-- Honeypot for spam bots -->
+  <input type="hidden" name="_honey" style="display:none">
 
-    <p>Email: <a href="mailto:menjuent@yahoo.com">menjuent@yahoo.com</a></p>
-    <p>Phone: +254 723 878 746</p>
-    <p>Address: Nairobi, Kenya</p>
-    <p>&copy; 2025 Menju Enterprises Logistics. All rights reserved.</p>
-  </footer>
+  <!-- Disable Captcha (optional) -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <!-- Redirect to Thank You page -->
+  <input type="hidden" name="_next" value="https://malloy-beep.github.io/menju-enterprises-logistics/thank-you.html">
+
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Your Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <button type="submit">Get a Quote</button>
+</form>
+
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
